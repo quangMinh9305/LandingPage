@@ -1,45 +1,14 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
- * Define Global Variables
- * 
-*/
-const sections = document.querySelectorAll('section');
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+// Create and add new paragraph
+const newPara = document.createElement('section');
+newPara.setAttribute('id', 'section4');
+newPara.setAttribute('data-nav', 'Section 4');
+newPara.innerHTML = document.querySelector('#section1').innerHTML;
+newPara.querySelector('h2').textContent = 'Section 4';
+document.querySelector('main').appendChild(newPara);
 
 // build the nav
 const navMenu = document.querySelector('#navbar__list')
+const sections = document.querySelectorAll('section');
 for (const section of sections) {
     const navItem = document.createElement('li');
     navItem.textContent = section.getAttribute('data-nav');
@@ -52,16 +21,15 @@ for (const section of sections) {
     navMenu.appendChild((navItem));
 }
 
-
 // Add class 'active' to section when near top of viewport
 const VALUE = 150;
 function makeActive() {
     for (const section of sections) {
         const box = section.getBoundingClientRect();
         if (box.top <= VALUE && box.bottom >= VALUE) {
-            section.classList.add('active');
+            section.classList.add('your-active-class');
         } else {
-            section.classList.remove('active');
+            section.classList.remove('your-active-class');
         }
     }
 }
@@ -73,20 +41,8 @@ function scrollToAnchor(element) {
     item.scrollIntoView({ behavior: 'smooth' });
 }
 
-/**
- * End Main Functions
- * Begin Events
- *
-*/
 
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
-// Top button on the page
+// Scroll-To-Top button on the page
 // Create the button element
 const scrollToTopButton = document.createElement('button');
 scrollToTopButton.textContent = 'Scroll to Top';
@@ -95,8 +51,8 @@ scrollToTopButton.style.cssText = "position: fixed; bottom: 20px; right: 20px; b
 // Add the button to the page
 document.body.appendChild(scrollToTopButton);
 
-// Fold height
-const foldHeight = 600; // pixels
+// set a const value for the fold height
+const foldHeight = 600;
 
 // Add an event listener to the window's scroll event
 window.addEventListener('scroll', () => {
@@ -126,6 +82,7 @@ window.addEventListener('scroll', () => {
         }
     }, 2000);
 });
+
 
 
 
